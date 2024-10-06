@@ -1,6 +1,5 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_anim/bloc/main_bloc.dart';
 import 'package:test_anim/widget_item.dart';
@@ -36,9 +35,15 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  var random = Random();
-  Map<String, Color> _list = {};
   var _bloc = MainBloc();
+
+  @override
+  void initState() {
+    super.initState();
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      _bloc.add(MainEvent.init(MediaQuery.of(context).size.width));
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,22 +51,21 @@ class _MyHomePageState extends State<MyHomePage> {
       create: (context) => _bloc,
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Theme
-              .of(context)
-              .colorScheme
-              .inversePrimary,
+          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           title: Text(widget.title),
         ),
         body: Padding(
           padding: const EdgeInsets.all(20.0),
-          child: SizedBox(
-            width: double.infinity,
-            child: SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
+          child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width - 40,
+              height: MediaQuery.of(context).size.height,
               child: BlocBuilder<MainBloc, MainState>(
                 builder: (context, state) {
-                  return Wrap(
-                    children: state.widgets.map((e) => WidgetItem(data: e)).toList(),
+                  return Stack(
+                    children:
+                        state.widgets.map((e) => WidgetItem(data: e)).toList(),
                   );
                 },
               ),

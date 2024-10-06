@@ -20,6 +20,7 @@ class MainBloc extends Bloc<MainEvent, MainState> {
   MainBloc() : super(MainState.initial()) {
     on<MainEvent>((event, emit) async {
       await event.when<FutureOr<void>>(
+        init: (width) => emit(state.copyWith(width: width - 20)),
         add: () => _add(emit),
         move: (id, offset) => _move(id, offset, emit),
         size: (id, offset) => _changeSize(id, offset, emit),
@@ -32,6 +33,16 @@ class MainBloc extends Bloc<MainEvent, MainState> {
     var list = List.of(state.widgets);
 
     var position = list.isEmpty ? 0 : list.map((e) => e.position).max + 1;
+    var x = 10.0;
+    var y = 10.0;
+    for (var item in state.widgets) {
+      x = item.x + item.width + 20;
+      if (x + 250 > state.width) {
+        x = 10;
+        y = item.y + item.height + 20;
+      }
+      //y = item.y + item.height;
+    }
     var item = WidgetModel(
       id: const Uuid().v4(),
       color: Color.fromARGB(
@@ -41,6 +52,8 @@ class MainBloc extends Bloc<MainEvent, MainState> {
         r.nextInt(255),
       ),
       position: position,
+      x: x,
+      y: y,
     );
     list.add(item);
     emit(state.copyWith(widgets: list));

@@ -19,6 +19,7 @@ mixin _$MainEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() add,
+    required TResult Function(double width) init,
     required TResult Function(String id, Offset offset) move,
     required TResult Function(String id, Offset offset) size,
   }) =>
@@ -26,6 +27,7 @@ mixin _$MainEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? add,
+    TResult? Function(double width)? init,
     TResult? Function(String id, Offset offset)? move,
     TResult? Function(String id, Offset offset)? size,
   }) =>
@@ -33,6 +35,7 @@ mixin _$MainEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? add,
+    TResult Function(double width)? init,
     TResult Function(String id, Offset offset)? move,
     TResult Function(String id, Offset offset)? size,
     required TResult orElse(),
@@ -41,6 +44,7 @@ mixin _$MainEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Add value) add,
+    required TResult Function(_Init value) init,
     required TResult Function(_Move value) move,
     required TResult Function(_ChangeSize value) size,
   }) =>
@@ -48,6 +52,7 @@ mixin _$MainEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Add value)? add,
+    TResult? Function(_Init value)? init,
     TResult? Function(_Move value)? move,
     TResult? Function(_ChangeSize value)? size,
   }) =>
@@ -55,6 +60,7 @@ mixin _$MainEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Add value)? add,
+    TResult Function(_Init value)? init,
     TResult Function(_Move value)? move,
     TResult Function(_ChangeSize value)? size,
     required TResult orElse(),
@@ -116,6 +122,7 @@ class _$AddImpl implements _Add {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() add,
+    required TResult Function(double width) init,
     required TResult Function(String id, Offset offset) move,
     required TResult Function(String id, Offset offset) size,
   }) {
@@ -126,6 +133,7 @@ class _$AddImpl implements _Add {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? add,
+    TResult? Function(double width)? init,
     TResult? Function(String id, Offset offset)? move,
     TResult? Function(String id, Offset offset)? size,
   }) {
@@ -136,6 +144,7 @@ class _$AddImpl implements _Add {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? add,
+    TResult Function(double width)? init,
     TResult Function(String id, Offset offset)? move,
     TResult Function(String id, Offset offset)? size,
     required TResult orElse(),
@@ -150,6 +159,7 @@ class _$AddImpl implements _Add {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Add value) add,
+    required TResult Function(_Init value) init,
     required TResult Function(_Move value) move,
     required TResult Function(_ChangeSize value) size,
   }) {
@@ -160,6 +170,7 @@ class _$AddImpl implements _Add {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Add value)? add,
+    TResult? Function(_Init value)? init,
     TResult? Function(_Move value)? move,
     TResult? Function(_ChangeSize value)? size,
   }) {
@@ -170,6 +181,7 @@ class _$AddImpl implements _Add {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Add value)? add,
+    TResult Function(_Init value)? init,
     TResult Function(_Move value)? move,
     TResult Function(_ChangeSize value)? size,
     required TResult orElse(),
@@ -183,6 +195,150 @@ class _$AddImpl implements _Add {
 
 abstract class _Add implements MainEvent {
   const factory _Add() = _$AddImpl;
+}
+
+/// @nodoc
+abstract class _$$InitImplCopyWith<$Res> {
+  factory _$$InitImplCopyWith(
+          _$InitImpl value, $Res Function(_$InitImpl) then) =
+      __$$InitImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({double width});
+}
+
+/// @nodoc
+class __$$InitImplCopyWithImpl<$Res>
+    extends _$MainEventCopyWithImpl<$Res, _$InitImpl>
+    implements _$$InitImplCopyWith<$Res> {
+  __$$InitImplCopyWithImpl(_$InitImpl _value, $Res Function(_$InitImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? width = null,
+  }) {
+    return _then(_$InitImpl(
+      null == width
+          ? _value.width
+          : width // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$InitImpl implements _Init {
+  const _$InitImpl(this.width);
+
+  @override
+  final double width;
+
+  @override
+  String toString() {
+    return 'MainEvent.init(width: $width)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$InitImpl &&
+            (identical(other.width, width) || other.width == width));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, width);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$InitImplCopyWith<_$InitImpl> get copyWith =>
+      __$$InitImplCopyWithImpl<_$InitImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() add,
+    required TResult Function(double width) init,
+    required TResult Function(String id, Offset offset) move,
+    required TResult Function(String id, Offset offset) size,
+  }) {
+    return init(width);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? add,
+    TResult? Function(double width)? init,
+    TResult? Function(String id, Offset offset)? move,
+    TResult? Function(String id, Offset offset)? size,
+  }) {
+    return init?.call(width);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? add,
+    TResult Function(double width)? init,
+    TResult Function(String id, Offset offset)? move,
+    TResult Function(String id, Offset offset)? size,
+    required TResult orElse(),
+  }) {
+    if (init != null) {
+      return init(width);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Add value) add,
+    required TResult Function(_Init value) init,
+    required TResult Function(_Move value) move,
+    required TResult Function(_ChangeSize value) size,
+  }) {
+    return init(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Add value)? add,
+    TResult? Function(_Init value)? init,
+    TResult? Function(_Move value)? move,
+    TResult? Function(_ChangeSize value)? size,
+  }) {
+    return init?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Add value)? add,
+    TResult Function(_Init value)? init,
+    TResult Function(_Move value)? move,
+    TResult Function(_ChangeSize value)? size,
+    required TResult orElse(),
+  }) {
+    if (init != null) {
+      return init(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Init implements MainEvent {
+  const factory _Init(final double width) = _$InitImpl;
+
+  double get width;
+  @JsonKey(ignore: true)
+  _$$InitImplCopyWith<_$InitImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -257,6 +413,7 @@ class _$MoveImpl implements _Move {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() add,
+    required TResult Function(double width) init,
     required TResult Function(String id, Offset offset) move,
     required TResult Function(String id, Offset offset) size,
   }) {
@@ -267,6 +424,7 @@ class _$MoveImpl implements _Move {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? add,
+    TResult? Function(double width)? init,
     TResult? Function(String id, Offset offset)? move,
     TResult? Function(String id, Offset offset)? size,
   }) {
@@ -277,6 +435,7 @@ class _$MoveImpl implements _Move {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? add,
+    TResult Function(double width)? init,
     TResult Function(String id, Offset offset)? move,
     TResult Function(String id, Offset offset)? size,
     required TResult orElse(),
@@ -291,6 +450,7 @@ class _$MoveImpl implements _Move {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Add value) add,
+    required TResult Function(_Init value) init,
     required TResult Function(_Move value) move,
     required TResult Function(_ChangeSize value) size,
   }) {
@@ -301,6 +461,7 @@ class _$MoveImpl implements _Move {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Add value)? add,
+    TResult? Function(_Init value)? init,
     TResult? Function(_Move value)? move,
     TResult? Function(_ChangeSize value)? size,
   }) {
@@ -311,6 +472,7 @@ class _$MoveImpl implements _Move {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Add value)? add,
+    TResult Function(_Init value)? init,
     TResult Function(_Move value)? move,
     TResult Function(_ChangeSize value)? size,
     required TResult orElse(),
@@ -405,6 +567,7 @@ class _$ChangeSizeImpl implements _ChangeSize {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() add,
+    required TResult Function(double width) init,
     required TResult Function(String id, Offset offset) move,
     required TResult Function(String id, Offset offset) size,
   }) {
@@ -415,6 +578,7 @@ class _$ChangeSizeImpl implements _ChangeSize {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? add,
+    TResult? Function(double width)? init,
     TResult? Function(String id, Offset offset)? move,
     TResult? Function(String id, Offset offset)? size,
   }) {
@@ -425,6 +589,7 @@ class _$ChangeSizeImpl implements _ChangeSize {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? add,
+    TResult Function(double width)? init,
     TResult Function(String id, Offset offset)? move,
     TResult Function(String id, Offset offset)? size,
     required TResult orElse(),
@@ -439,6 +604,7 @@ class _$ChangeSizeImpl implements _ChangeSize {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Add value) add,
+    required TResult Function(_Init value) init,
     required TResult Function(_Move value) move,
     required TResult Function(_ChangeSize value) size,
   }) {
@@ -449,6 +615,7 @@ class _$ChangeSizeImpl implements _ChangeSize {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Add value)? add,
+    TResult? Function(_Init value)? init,
     TResult? Function(_Move value)? move,
     TResult? Function(_ChangeSize value)? size,
   }) {
@@ -459,6 +626,7 @@ class _$ChangeSizeImpl implements _ChangeSize {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Add value)? add,
+    TResult Function(_Init value)? init,
     TResult Function(_Move value)? move,
     TResult Function(_ChangeSize value)? size,
     required TResult orElse(),
@@ -483,6 +651,7 @@ abstract class _ChangeSize implements MainEvent {
 
 /// @nodoc
 mixin _$MainState {
+  double get width => throw _privateConstructorUsedError;
   List<WidgetModel> get widgets => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -495,7 +664,7 @@ abstract class $MainStateCopyWith<$Res> {
   factory $MainStateCopyWith(MainState value, $Res Function(MainState) then) =
       _$MainStateCopyWithImpl<$Res, MainState>;
   @useResult
-  $Res call({List<WidgetModel> widgets});
+  $Res call({double width, List<WidgetModel> widgets});
 }
 
 /// @nodoc
@@ -511,9 +680,14 @@ class _$MainStateCopyWithImpl<$Res, $Val extends MainState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? width = null,
     Object? widgets = null,
   }) {
     return _then(_value.copyWith(
+      width: null == width
+          ? _value.width
+          : width // ignore: cast_nullable_to_non_nullable
+              as double,
       widgets: null == widgets
           ? _value.widgets
           : widgets // ignore: cast_nullable_to_non_nullable
@@ -530,7 +704,7 @@ abstract class _$$MainStateImplCopyWith<$Res>
       __$$MainStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<WidgetModel> widgets});
+  $Res call({double width, List<WidgetModel> widgets});
 }
 
 /// @nodoc
@@ -544,9 +718,14 @@ class __$$MainStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? width = null,
     Object? widgets = null,
   }) {
     return _then(_$MainStateImpl(
+      width: null == width
+          ? _value.width
+          : width // ignore: cast_nullable_to_non_nullable
+              as double,
       widgets: null == widgets
           ? _value._widgets
           : widgets // ignore: cast_nullable_to_non_nullable
@@ -558,9 +737,13 @@ class __$$MainStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$MainStateImpl implements _MainState {
-  const _$MainStateImpl({final List<WidgetModel> widgets = const []})
+  const _$MainStateImpl(
+      {this.width = 0, final List<WidgetModel> widgets = const []})
       : _widgets = widgets;
 
+  @override
+  @JsonKey()
+  final double width;
   final List<WidgetModel> _widgets;
   @override
   @JsonKey()
@@ -572,7 +755,7 @@ class _$MainStateImpl implements _MainState {
 
   @override
   String toString() {
-    return 'MainState(widgets: $widgets)';
+    return 'MainState(width: $width, widgets: $widgets)';
   }
 
   @override
@@ -580,12 +763,13 @@ class _$MainStateImpl implements _MainState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MainStateImpl &&
+            (identical(other.width, width) || other.width == width) &&
             const DeepCollectionEquality().equals(other._widgets, _widgets));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_widgets));
+  int get hashCode => Object.hash(
+      runtimeType, width, const DeepCollectionEquality().hash(_widgets));
 
   @JsonKey(ignore: true)
   @override
@@ -595,8 +779,11 @@ class _$MainStateImpl implements _MainState {
 }
 
 abstract class _MainState implements MainState {
-  const factory _MainState({final List<WidgetModel> widgets}) = _$MainStateImpl;
+  const factory _MainState(
+      {final double width, final List<WidgetModel> widgets}) = _$MainStateImpl;
 
+  @override
+  double get width;
   @override
   List<WidgetModel> get widgets;
   @override

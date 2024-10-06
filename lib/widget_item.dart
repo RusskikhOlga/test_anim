@@ -14,8 +14,9 @@ class WidgetItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 20, bottom: 20),
+    return Positioned(
+      left: data.x,
+      top: data.y,
       child: MouseRegion(
         cursor: data.direction.cursor(),
         onHover: (event) {
