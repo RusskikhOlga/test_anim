@@ -13,8 +13,10 @@ extension DirectionExt on Direction {
         return SystemMouseCursors.resizeDownRight;
       case Direction.bottom:
         return SystemMouseCursors.resizeDown;
-      default:
+      case Direction.move:
         return SystemMouseCursors.basic;
+      default:
+        return SystemMouseCursors.move;
     }
   }
 }

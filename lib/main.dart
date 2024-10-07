@@ -64,8 +64,12 @@ class _MyHomePageState extends State<MyHomePage> {
               child: BlocBuilder<MainBloc, MainState>(
                 builder: (context, state) {
                   return Stack(
-                    children:
-                        state.widgets.map((e) => WidgetItem(data: e)).toList(),
+                    children: state.widgets
+                        .map((e) => WidgetItem(
+                              key: Key(e.id.toString()),
+                              data: e,
+                            ))
+                        .toList(),
                   );
                 },
               ),

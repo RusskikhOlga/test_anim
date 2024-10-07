@@ -3,4 +3,5 @@ enum Direction {
   right,
   bottomRight,
   bottom,
+  move
 }

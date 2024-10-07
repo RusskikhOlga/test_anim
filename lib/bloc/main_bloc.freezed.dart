@@ -20,24 +20,30 @@ mixin _$MainEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() add,
     required TResult Function(double width) init,
-    required TResult Function(String id, Offset offset) move,
-    required TResult Function(String id, Offset offset) size,
+    required TResult Function(int id, Offset offset) cursor,
+    required TResult Function(int id) clearCursor,
+    required TResult Function(int id, Offset offset) change,
+    required TResult Function(int id) toPosition,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? add,
     TResult? Function(double width)? init,
-    TResult? Function(String id, Offset offset)? move,
-    TResult? Function(String id, Offset offset)? size,
+    TResult? Function(int id, Offset offset)? cursor,
+    TResult? Function(int id)? clearCursor,
+    TResult? Function(int id, Offset offset)? change,
+    TResult? Function(int id)? toPosition,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? add,
     TResult Function(double width)? init,
-    TResult Function(String id, Offset offset)? move,
-    TResult Function(String id, Offset offset)? size,
+    TResult Function(int id, Offset offset)? cursor,
+    TResult Function(int id)? clearCursor,
+    TResult Function(int id, Offset offset)? change,
+    TResult Function(int id)? toPosition,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -45,24 +51,30 @@ mixin _$MainEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Add value) add,
     required TResult Function(_Init value) init,
-    required TResult Function(_Move value) move,
-    required TResult Function(_ChangeSize value) size,
+    required TResult Function(_Cursor value) cursor,
+    required TResult Function(_ClearCursor value) clearCursor,
+    required TResult Function(_Change value) change,
+    required TResult Function(_ToPosition value) toPosition,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Add value)? add,
     TResult? Function(_Init value)? init,
-    TResult? Function(_Move value)? move,
-    TResult? Function(_ChangeSize value)? size,
+    TResult? Function(_Cursor value)? cursor,
+    TResult? Function(_ClearCursor value)? clearCursor,
+    TResult? Function(_Change value)? change,
+    TResult? Function(_ToPosition value)? toPosition,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Add value)? add,
     TResult Function(_Init value)? init,
-    TResult Function(_Move value)? move,
-    TResult Function(_ChangeSize value)? size,
+    TResult Function(_Cursor value)? cursor,
+    TResult Function(_ClearCursor value)? clearCursor,
+    TResult Function(_Change value)? change,
+    TResult Function(_ToPosition value)? toPosition,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -123,8 +135,10 @@ class _$AddImpl implements _Add {
   TResult when<TResult extends Object?>({
     required TResult Function() add,
     required TResult Function(double width) init,
-    required TResult Function(String id, Offset offset) move,
-    required TResult Function(String id, Offset offset) size,
+    required TResult Function(int id, Offset offset) cursor,
+    required TResult Function(int id) clearCursor,
+    required TResult Function(int id, Offset offset) change,
+    required TResult Function(int id) toPosition,
   }) {
     return add();
   }
@@ -134,8 +148,10 @@ class _$AddImpl implements _Add {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? add,
     TResult? Function(double width)? init,
-    TResult? Function(String id, Offset offset)? move,
-    TResult? Function(String id, Offset offset)? size,
+    TResult? Function(int id, Offset offset)? cursor,
+    TResult? Function(int id)? clearCursor,
+    TResult? Function(int id, Offset offset)? change,
+    TResult? Function(int id)? toPosition,
   }) {
     return add?.call();
   }
@@ -145,8 +161,10 @@ class _$AddImpl implements _Add {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? add,
     TResult Function(double width)? init,
-    TResult Function(String id, Offset offset)? move,
-    TResult Function(String id, Offset offset)? size,
+    TResult Function(int id, Offset offset)? cursor,
+    TResult Function(int id)? clearCursor,
+    TResult Function(int id, Offset offset)? change,
+    TResult Function(int id)? toPosition,
     required TResult orElse(),
   }) {
     if (add != null) {
@@ -160,8 +178,10 @@ class _$AddImpl implements _Add {
   TResult map<TResult extends Object?>({
     required TResult Function(_Add value) add,
     required TResult Function(_Init value) init,
-    required TResult Function(_Move value) move,
-    required TResult Function(_ChangeSize value) size,
+    required TResult Function(_Cursor value) cursor,
+    required TResult Function(_ClearCursor value) clearCursor,
+    required TResult Function(_Change value) change,
+    required TResult Function(_ToPosition value) toPosition,
   }) {
     return add(this);
   }
@@ -171,8 +191,10 @@ class _$AddImpl implements _Add {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Add value)? add,
     TResult? Function(_Init value)? init,
-    TResult? Function(_Move value)? move,
-    TResult? Function(_ChangeSize value)? size,
+    TResult? Function(_Cursor value)? cursor,
+    TResult? Function(_ClearCursor value)? clearCursor,
+    TResult? Function(_Change value)? change,
+    TResult? Function(_ToPosition value)? toPosition,
   }) {
     return add?.call(this);
   }
@@ -182,8 +204,10 @@ class _$AddImpl implements _Add {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Add value)? add,
     TResult Function(_Init value)? init,
-    TResult Function(_Move value)? move,
-    TResult Function(_ChangeSize value)? size,
+    TResult Function(_Cursor value)? cursor,
+    TResult Function(_ClearCursor value)? clearCursor,
+    TResult Function(_Change value)? change,
+    TResult Function(_ToPosition value)? toPosition,
     required TResult orElse(),
   }) {
     if (add != null) {
@@ -262,8 +286,10 @@ class _$InitImpl implements _Init {
   TResult when<TResult extends Object?>({
     required TResult Function() add,
     required TResult Function(double width) init,
-    required TResult Function(String id, Offset offset) move,
-    required TResult Function(String id, Offset offset) size,
+    required TResult Function(int id, Offset offset) cursor,
+    required TResult Function(int id) clearCursor,
+    required TResult Function(int id, Offset offset) change,
+    required TResult Function(int id) toPosition,
   }) {
     return init(width);
   }
@@ -273,8 +299,10 @@ class _$InitImpl implements _Init {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? add,
     TResult? Function(double width)? init,
-    TResult? Function(String id, Offset offset)? move,
-    TResult? Function(String id, Offset offset)? size,
+    TResult? Function(int id, Offset offset)? cursor,
+    TResult? Function(int id)? clearCursor,
+    TResult? Function(int id, Offset offset)? change,
+    TResult? Function(int id)? toPosition,
   }) {
     return init?.call(width);
   }
@@ -284,8 +312,10 @@ class _$InitImpl implements _Init {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? add,
     TResult Function(double width)? init,
-    TResult Function(String id, Offset offset)? move,
-    TResult Function(String id, Offset offset)? size,
+    TResult Function(int id, Offset offset)? cursor,
+    TResult Function(int id)? clearCursor,
+    TResult Function(int id, Offset offset)? change,
+    TResult Function(int id)? toPosition,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -299,8 +329,10 @@ class _$InitImpl implements _Init {
   TResult map<TResult extends Object?>({
     required TResult Function(_Add value) add,
     required TResult Function(_Init value) init,
-    required TResult Function(_Move value) move,
-    required TResult Function(_ChangeSize value) size,
+    required TResult Function(_Cursor value) cursor,
+    required TResult Function(_ClearCursor value) clearCursor,
+    required TResult Function(_Change value) change,
+    required TResult Function(_ToPosition value) toPosition,
   }) {
     return init(this);
   }
@@ -310,8 +342,10 @@ class _$InitImpl implements _Init {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Add value)? add,
     TResult? Function(_Init value)? init,
-    TResult? Function(_Move value)? move,
-    TResult? Function(_ChangeSize value)? size,
+    TResult? Function(_Cursor value)? cursor,
+    TResult? Function(_ClearCursor value)? clearCursor,
+    TResult? Function(_Change value)? change,
+    TResult? Function(_ToPosition value)? toPosition,
   }) {
     return init?.call(this);
   }
@@ -321,8 +355,10 @@ class _$InitImpl implements _Init {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Add value)? add,
     TResult Function(_Init value)? init,
-    TResult Function(_Move value)? move,
-    TResult Function(_ChangeSize value)? size,
+    TResult Function(_Cursor value)? cursor,
+    TResult Function(_ClearCursor value)? clearCursor,
+    TResult Function(_Change value)? change,
+    TResult Function(_ToPosition value)? toPosition,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -342,19 +378,20 @@ abstract class _Init implements MainEvent {
 }
 
 /// @nodoc
-abstract class _$$MoveImplCopyWith<$Res> {
-  factory _$$MoveImplCopyWith(
-          _$MoveImpl value, $Res Function(_$MoveImpl) then) =
-      __$$MoveImplCopyWithImpl<$Res>;
+abstract class _$$CursorImplCopyWith<$Res> {
+  factory _$$CursorImplCopyWith(
+          _$CursorImpl value, $Res Function(_$CursorImpl) then) =
+      __$$CursorImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String id, Offset offset});
+  $Res call({int id, Offset offset});
 }
 
 /// @nodoc
-class __$$MoveImplCopyWithImpl<$Res>
-    extends _$MainEventCopyWithImpl<$Res, _$MoveImpl>
-    implements _$$MoveImplCopyWith<$Res> {
-  __$$MoveImplCopyWithImpl(_$MoveImpl _value, $Res Function(_$MoveImpl) _then)
+class __$$CursorImplCopyWithImpl<$Res>
+    extends _$MainEventCopyWithImpl<$Res, _$CursorImpl>
+    implements _$$CursorImplCopyWith<$Res> {
+  __$$CursorImplCopyWithImpl(
+      _$CursorImpl _value, $Res Function(_$CursorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -363,11 +400,11 @@ class __$$MoveImplCopyWithImpl<$Res>
     Object? id = null,
     Object? offset = null,
   }) {
-    return _then(_$MoveImpl(
+    return _then(_$CursorImpl(
       null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       null == offset
           ? _value.offset
           : offset // ignore: cast_nullable_to_non_nullable
@@ -378,24 +415,24 @@ class __$$MoveImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$MoveImpl implements _Move {
-  const _$MoveImpl(this.id, this.offset);
+class _$CursorImpl implements _Cursor {
+  const _$CursorImpl(this.id, this.offset);
 
   @override
-  final String id;
+  final int id;
   @override
   final Offset offset;
 
   @override
   String toString() {
-    return 'MainEvent.move(id: $id, offset: $offset)';
+    return 'MainEvent.cursor(id: $id, offset: $offset)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MoveImpl &&
+            other is _$CursorImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.offset, offset) || other.offset == offset));
   }
@@ -406,18 +443,20 @@ class _$MoveImpl implements _Move {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$MoveImplCopyWith<_$MoveImpl> get copyWith =>
-      __$$MoveImplCopyWithImpl<_$MoveImpl>(this, _$identity);
+  _$$CursorImplCopyWith<_$CursorImpl> get copyWith =>
+      __$$CursorImplCopyWithImpl<_$CursorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() add,
     required TResult Function(double width) init,
-    required TResult Function(String id, Offset offset) move,
-    required TResult Function(String id, Offset offset) size,
+    required TResult Function(int id, Offset offset) cursor,
+    required TResult Function(int id) clearCursor,
+    required TResult Function(int id, Offset offset) change,
+    required TResult Function(int id) toPosition,
   }) {
-    return move(id, offset);
+    return cursor(id, offset);
   }
 
   @override
@@ -425,10 +464,12 @@ class _$MoveImpl implements _Move {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? add,
     TResult? Function(double width)? init,
-    TResult? Function(String id, Offset offset)? move,
-    TResult? Function(String id, Offset offset)? size,
+    TResult? Function(int id, Offset offset)? cursor,
+    TResult? Function(int id)? clearCursor,
+    TResult? Function(int id, Offset offset)? change,
+    TResult? Function(int id)? toPosition,
   }) {
-    return move?.call(id, offset);
+    return cursor?.call(id, offset);
   }
 
   @override
@@ -436,12 +477,14 @@ class _$MoveImpl implements _Move {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? add,
     TResult Function(double width)? init,
-    TResult Function(String id, Offset offset)? move,
-    TResult Function(String id, Offset offset)? size,
+    TResult Function(int id, Offset offset)? cursor,
+    TResult Function(int id)? clearCursor,
+    TResult Function(int id, Offset offset)? change,
+    TResult Function(int id)? toPosition,
     required TResult orElse(),
   }) {
-    if (move != null) {
-      return move(id, offset);
+    if (cursor != null) {
+      return cursor(id, offset);
     }
     return orElse();
   }
@@ -451,10 +494,12 @@ class _$MoveImpl implements _Move {
   TResult map<TResult extends Object?>({
     required TResult Function(_Add value) add,
     required TResult Function(_Init value) init,
-    required TResult Function(_Move value) move,
-    required TResult Function(_ChangeSize value) size,
+    required TResult Function(_Cursor value) cursor,
+    required TResult Function(_ClearCursor value) clearCursor,
+    required TResult Function(_Change value) change,
+    required TResult Function(_ToPosition value) toPosition,
   }) {
-    return move(this);
+    return cursor(this);
   }
 
   @override
@@ -462,10 +507,12 @@ class _$MoveImpl implements _Move {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Add value)? add,
     TResult? Function(_Init value)? init,
-    TResult? Function(_Move value)? move,
-    TResult? Function(_ChangeSize value)? size,
+    TResult? Function(_Cursor value)? cursor,
+    TResult? Function(_ClearCursor value)? clearCursor,
+    TResult? Function(_Change value)? change,
+    TResult? Function(_ToPosition value)? toPosition,
   }) {
-    return move?.call(this);
+    return cursor?.call(this);
   }
 
   @override
@@ -473,42 +520,201 @@ class _$MoveImpl implements _Move {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Add value)? add,
     TResult Function(_Init value)? init,
-    TResult Function(_Move value)? move,
-    TResult Function(_ChangeSize value)? size,
+    TResult Function(_Cursor value)? cursor,
+    TResult Function(_ClearCursor value)? clearCursor,
+    TResult Function(_Change value)? change,
+    TResult Function(_ToPosition value)? toPosition,
     required TResult orElse(),
   }) {
-    if (move != null) {
-      return move(this);
+    if (cursor != null) {
+      return cursor(this);
     }
     return orElse();
   }
 }
 
-abstract class _Move implements MainEvent {
-  const factory _Move(final String id, final Offset offset) = _$MoveImpl;
+abstract class _Cursor implements MainEvent {
+  const factory _Cursor(final int id, final Offset offset) = _$CursorImpl;
 
-  String get id;
+  int get id;
   Offset get offset;
   @JsonKey(ignore: true)
-  _$$MoveImplCopyWith<_$MoveImpl> get copyWith =>
+  _$$CursorImplCopyWith<_$CursorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ChangeSizeImplCopyWith<$Res> {
-  factory _$$ChangeSizeImplCopyWith(
-          _$ChangeSizeImpl value, $Res Function(_$ChangeSizeImpl) then) =
-      __$$ChangeSizeImplCopyWithImpl<$Res>;
+abstract class _$$ClearCursorImplCopyWith<$Res> {
+  factory _$$ClearCursorImplCopyWith(
+          _$ClearCursorImpl value, $Res Function(_$ClearCursorImpl) then) =
+      __$$ClearCursorImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String id, Offset offset});
+  $Res call({int id});
 }
 
 /// @nodoc
-class __$$ChangeSizeImplCopyWithImpl<$Res>
-    extends _$MainEventCopyWithImpl<$Res, _$ChangeSizeImpl>
-    implements _$$ChangeSizeImplCopyWith<$Res> {
-  __$$ChangeSizeImplCopyWithImpl(
-      _$ChangeSizeImpl _value, $Res Function(_$ChangeSizeImpl) _then)
+class __$$ClearCursorImplCopyWithImpl<$Res>
+    extends _$MainEventCopyWithImpl<$Res, _$ClearCursorImpl>
+    implements _$$ClearCursorImplCopyWith<$Res> {
+  __$$ClearCursorImplCopyWithImpl(
+      _$ClearCursorImpl _value, $Res Function(_$ClearCursorImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$ClearCursorImpl(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ClearCursorImpl implements _ClearCursor {
+  const _$ClearCursorImpl(this.id);
+
+  @override
+  final int id;
+
+  @override
+  String toString() {
+    return 'MainEvent.clearCursor(id: $id)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ClearCursorImpl &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ClearCursorImplCopyWith<_$ClearCursorImpl> get copyWith =>
+      __$$ClearCursorImplCopyWithImpl<_$ClearCursorImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() add,
+    required TResult Function(double width) init,
+    required TResult Function(int id, Offset offset) cursor,
+    required TResult Function(int id) clearCursor,
+    required TResult Function(int id, Offset offset) change,
+    required TResult Function(int id) toPosition,
+  }) {
+    return clearCursor(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? add,
+    TResult? Function(double width)? init,
+    TResult? Function(int id, Offset offset)? cursor,
+    TResult? Function(int id)? clearCursor,
+    TResult? Function(int id, Offset offset)? change,
+    TResult? Function(int id)? toPosition,
+  }) {
+    return clearCursor?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? add,
+    TResult Function(double width)? init,
+    TResult Function(int id, Offset offset)? cursor,
+    TResult Function(int id)? clearCursor,
+    TResult Function(int id, Offset offset)? change,
+    TResult Function(int id)? toPosition,
+    required TResult orElse(),
+  }) {
+    if (clearCursor != null) {
+      return clearCursor(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Add value) add,
+    required TResult Function(_Init value) init,
+    required TResult Function(_Cursor value) cursor,
+    required TResult Function(_ClearCursor value) clearCursor,
+    required TResult Function(_Change value) change,
+    required TResult Function(_ToPosition value) toPosition,
+  }) {
+    return clearCursor(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Add value)? add,
+    TResult? Function(_Init value)? init,
+    TResult? Function(_Cursor value)? cursor,
+    TResult? Function(_ClearCursor value)? clearCursor,
+    TResult? Function(_Change value)? change,
+    TResult? Function(_ToPosition value)? toPosition,
+  }) {
+    return clearCursor?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Add value)? add,
+    TResult Function(_Init value)? init,
+    TResult Function(_Cursor value)? cursor,
+    TResult Function(_ClearCursor value)? clearCursor,
+    TResult Function(_Change value)? change,
+    TResult Function(_ToPosition value)? toPosition,
+    required TResult orElse(),
+  }) {
+    if (clearCursor != null) {
+      return clearCursor(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ClearCursor implements MainEvent {
+  const factory _ClearCursor(final int id) = _$ClearCursorImpl;
+
+  int get id;
+  @JsonKey(ignore: true)
+  _$$ClearCursorImplCopyWith<_$ClearCursorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeImplCopyWith<$Res> {
+  factory _$$ChangeImplCopyWith(
+          _$ChangeImpl value, $Res Function(_$ChangeImpl) then) =
+      __$$ChangeImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int id, Offset offset});
+}
+
+/// @nodoc
+class __$$ChangeImplCopyWithImpl<$Res>
+    extends _$MainEventCopyWithImpl<$Res, _$ChangeImpl>
+    implements _$$ChangeImplCopyWith<$Res> {
+  __$$ChangeImplCopyWithImpl(
+      _$ChangeImpl _value, $Res Function(_$ChangeImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -517,11 +723,11 @@ class __$$ChangeSizeImplCopyWithImpl<$Res>
     Object? id = null,
     Object? offset = null,
   }) {
-    return _then(_$ChangeSizeImpl(
+    return _then(_$ChangeImpl(
       null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       null == offset
           ? _value.offset
           : offset // ignore: cast_nullable_to_non_nullable
@@ -532,24 +738,24 @@ class __$$ChangeSizeImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ChangeSizeImpl implements _ChangeSize {
-  const _$ChangeSizeImpl(this.id, this.offset);
+class _$ChangeImpl implements _Change {
+  const _$ChangeImpl(this.id, this.offset);
 
   @override
-  final String id;
+  final int id;
   @override
   final Offset offset;
 
   @override
   String toString() {
-    return 'MainEvent.size(id: $id, offset: $offset)';
+    return 'MainEvent.change(id: $id, offset: $offset)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ChangeSizeImpl &&
+            other is _$ChangeImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.offset, offset) || other.offset == offset));
   }
@@ -560,18 +766,20 @@ class _$ChangeSizeImpl implements _ChangeSize {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ChangeSizeImplCopyWith<_$ChangeSizeImpl> get copyWith =>
-      __$$ChangeSizeImplCopyWithImpl<_$ChangeSizeImpl>(this, _$identity);
+  _$$ChangeImplCopyWith<_$ChangeImpl> get copyWith =>
+      __$$ChangeImplCopyWithImpl<_$ChangeImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() add,
     required TResult Function(double width) init,
-    required TResult Function(String id, Offset offset) move,
-    required TResult Function(String id, Offset offset) size,
+    required TResult Function(int id, Offset offset) cursor,
+    required TResult Function(int id) clearCursor,
+    required TResult Function(int id, Offset offset) change,
+    required TResult Function(int id) toPosition,
   }) {
-    return size(id, offset);
+    return change(id, offset);
   }
 
   @override
@@ -579,10 +787,12 @@ class _$ChangeSizeImpl implements _ChangeSize {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? add,
     TResult? Function(double width)? init,
-    TResult? Function(String id, Offset offset)? move,
-    TResult? Function(String id, Offset offset)? size,
+    TResult? Function(int id, Offset offset)? cursor,
+    TResult? Function(int id)? clearCursor,
+    TResult? Function(int id, Offset offset)? change,
+    TResult? Function(int id)? toPosition,
   }) {
-    return size?.call(id, offset);
+    return change?.call(id, offset);
   }
 
   @override
@@ -590,12 +800,14 @@ class _$ChangeSizeImpl implements _ChangeSize {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? add,
     TResult Function(double width)? init,
-    TResult Function(String id, Offset offset)? move,
-    TResult Function(String id, Offset offset)? size,
+    TResult Function(int id, Offset offset)? cursor,
+    TResult Function(int id)? clearCursor,
+    TResult Function(int id, Offset offset)? change,
+    TResult Function(int id)? toPosition,
     required TResult orElse(),
   }) {
-    if (size != null) {
-      return size(id, offset);
+    if (change != null) {
+      return change(id, offset);
     }
     return orElse();
   }
@@ -605,10 +817,12 @@ class _$ChangeSizeImpl implements _ChangeSize {
   TResult map<TResult extends Object?>({
     required TResult Function(_Add value) add,
     required TResult Function(_Init value) init,
-    required TResult Function(_Move value) move,
-    required TResult Function(_ChangeSize value) size,
+    required TResult Function(_Cursor value) cursor,
+    required TResult Function(_ClearCursor value) clearCursor,
+    required TResult Function(_Change value) change,
+    required TResult Function(_ToPosition value) toPosition,
   }) {
-    return size(this);
+    return change(this);
   }
 
   @override
@@ -616,10 +830,12 @@ class _$ChangeSizeImpl implements _ChangeSize {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Add value)? add,
     TResult? Function(_Init value)? init,
-    TResult? Function(_Move value)? move,
-    TResult? Function(_ChangeSize value)? size,
+    TResult? Function(_Cursor value)? cursor,
+    TResult? Function(_ClearCursor value)? clearCursor,
+    TResult? Function(_Change value)? change,
+    TResult? Function(_ToPosition value)? toPosition,
   }) {
-    return size?.call(this);
+    return change?.call(this);
   }
 
   @override
@@ -627,25 +843,183 @@ class _$ChangeSizeImpl implements _ChangeSize {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Add value)? add,
     TResult Function(_Init value)? init,
-    TResult Function(_Move value)? move,
-    TResult Function(_ChangeSize value)? size,
+    TResult Function(_Cursor value)? cursor,
+    TResult Function(_ClearCursor value)? clearCursor,
+    TResult Function(_Change value)? change,
+    TResult Function(_ToPosition value)? toPosition,
     required TResult orElse(),
   }) {
-    if (size != null) {
-      return size(this);
+    if (change != null) {
+      return change(this);
     }
     return orElse();
   }
 }
 
-abstract class _ChangeSize implements MainEvent {
-  const factory _ChangeSize(final String id, final Offset offset) =
-      _$ChangeSizeImpl;
+abstract class _Change implements MainEvent {
+  const factory _Change(final int id, final Offset offset) = _$ChangeImpl;
 
-  String get id;
+  int get id;
   Offset get offset;
   @JsonKey(ignore: true)
-  _$$ChangeSizeImplCopyWith<_$ChangeSizeImpl> get copyWith =>
+  _$$ChangeImplCopyWith<_$ChangeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ToPositionImplCopyWith<$Res> {
+  factory _$$ToPositionImplCopyWith(
+          _$ToPositionImpl value, $Res Function(_$ToPositionImpl) then) =
+      __$$ToPositionImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int id});
+}
+
+/// @nodoc
+class __$$ToPositionImplCopyWithImpl<$Res>
+    extends _$MainEventCopyWithImpl<$Res, _$ToPositionImpl>
+    implements _$$ToPositionImplCopyWith<$Res> {
+  __$$ToPositionImplCopyWithImpl(
+      _$ToPositionImpl _value, $Res Function(_$ToPositionImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$ToPositionImpl(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ToPositionImpl implements _ToPosition {
+  const _$ToPositionImpl(this.id);
+
+  @override
+  final int id;
+
+  @override
+  String toString() {
+    return 'MainEvent.toPosition(id: $id)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ToPositionImpl &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ToPositionImplCopyWith<_$ToPositionImpl> get copyWith =>
+      __$$ToPositionImplCopyWithImpl<_$ToPositionImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() add,
+    required TResult Function(double width) init,
+    required TResult Function(int id, Offset offset) cursor,
+    required TResult Function(int id) clearCursor,
+    required TResult Function(int id, Offset offset) change,
+    required TResult Function(int id) toPosition,
+  }) {
+    return toPosition(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? add,
+    TResult? Function(double width)? init,
+    TResult? Function(int id, Offset offset)? cursor,
+    TResult? Function(int id)? clearCursor,
+    TResult? Function(int id, Offset offset)? change,
+    TResult? Function(int id)? toPosition,
+  }) {
+    return toPosition?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? add,
+    TResult Function(double width)? init,
+    TResult Function(int id, Offset offset)? cursor,
+    TResult Function(int id)? clearCursor,
+    TResult Function(int id, Offset offset)? change,
+    TResult Function(int id)? toPosition,
+    required TResult orElse(),
+  }) {
+    if (toPosition != null) {
+      return toPosition(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Add value) add,
+    required TResult Function(_Init value) init,
+    required TResult Function(_Cursor value) cursor,
+    required TResult Function(_ClearCursor value) clearCursor,
+    required TResult Function(_Change value) change,
+    required TResult Function(_ToPosition value) toPosition,
+  }) {
+    return toPosition(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Add value)? add,
+    TResult? Function(_Init value)? init,
+    TResult? Function(_Cursor value)? cursor,
+    TResult? Function(_ClearCursor value)? clearCursor,
+    TResult? Function(_Change value)? change,
+    TResult? Function(_ToPosition value)? toPosition,
+  }) {
+    return toPosition?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Add value)? add,
+    TResult Function(_Init value)? init,
+    TResult Function(_Cursor value)? cursor,
+    TResult Function(_ClearCursor value)? clearCursor,
+    TResult Function(_Change value)? change,
+    TResult Function(_ToPosition value)? toPosition,
+    required TResult orElse(),
+  }) {
+    if (toPosition != null) {
+      return toPosition(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ToPosition implements MainEvent {
+  const factory _ToPosition(final int id) = _$ToPositionImpl;
+
+  int get id;
+  @JsonKey(ignore: true)
+  _$$ToPositionImplCopyWith<_$ToPositionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -653,6 +1027,8 @@ abstract class _ChangeSize implements MainEvent {
 mixin _$MainState {
   double get width => throw _privateConstructorUsedError;
   List<WidgetModel> get widgets => throw _privateConstructorUsedError;
+  Offset? get oldValue => throw _privateConstructorUsedError;
+  Offset get moveValue => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MainStateCopyWith<MainState> get copyWith =>
@@ -664,7 +1040,11 @@ abstract class $MainStateCopyWith<$Res> {
   factory $MainStateCopyWith(MainState value, $Res Function(MainState) then) =
       _$MainStateCopyWithImpl<$Res, MainState>;
   @useResult
-  $Res call({double width, List<WidgetModel> widgets});
+  $Res call(
+      {double width,
+      List<WidgetModel> widgets,
+      Offset? oldValue,
+      Offset moveValue});
 }
 
 /// @nodoc
@@ -682,6 +1062,8 @@ class _$MainStateCopyWithImpl<$Res, $Val extends MainState>
   $Res call({
     Object? width = null,
     Object? widgets = null,
+    Object? oldValue = freezed,
+    Object? moveValue = null,
   }) {
     return _then(_value.copyWith(
       width: null == width
@@ -692,6 +1074,14 @@ class _$MainStateCopyWithImpl<$Res, $Val extends MainState>
           ? _value.widgets
           : widgets // ignore: cast_nullable_to_non_nullable
               as List<WidgetModel>,
+      oldValue: freezed == oldValue
+          ? _value.oldValue
+          : oldValue // ignore: cast_nullable_to_non_nullable
+              as Offset?,
+      moveValue: null == moveValue
+          ? _value.moveValue
+          : moveValue // ignore: cast_nullable_to_non_nullable
+              as Offset,
     ) as $Val);
   }
 }
@@ -704,7 +1094,11 @@ abstract class _$$MainStateImplCopyWith<$Res>
       __$$MainStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({double width, List<WidgetModel> widgets});
+  $Res call(
+      {double width,
+      List<WidgetModel> widgets,
+      Offset? oldValue,
+      Offset moveValue});
 }
 
 /// @nodoc
@@ -720,6 +1114,8 @@ class __$$MainStateImplCopyWithImpl<$Res>
   $Res call({
     Object? width = null,
     Object? widgets = null,
+    Object? oldValue = freezed,
+    Object? moveValue = null,
   }) {
     return _then(_$MainStateImpl(
       width: null == width
@@ -730,6 +1126,14 @@ class __$$MainStateImplCopyWithImpl<$Res>
           ? _value._widgets
           : widgets // ignore: cast_nullable_to_non_nullable
               as List<WidgetModel>,
+      oldValue: freezed == oldValue
+          ? _value.oldValue
+          : oldValue // ignore: cast_nullable_to_non_nullable
+              as Offset?,
+      moveValue: null == moveValue
+          ? _value.moveValue
+          : moveValue // ignore: cast_nullable_to_non_nullable
+              as Offset,
     ));
   }
 }
@@ -738,7 +1142,10 @@ class __$$MainStateImplCopyWithImpl<$Res>
 
 class _$MainStateImpl implements _MainState {
   const _$MainStateImpl(
-      {this.width = 0, final List<WidgetModel> widgets = const []})
+      {this.width = 0,
+      final List<WidgetModel> widgets = const [],
+      this.oldValue,
+      this.moveValue = Offset.zero})
       : _widgets = widgets;
 
   @override
@@ -754,8 +1161,14 @@ class _$MainStateImpl implements _MainState {
   }
 
   @override
+  final Offset? oldValue;
+  @override
+  @JsonKey()
+  final Offset moveValue;
+
+  @override
   String toString() {
-    return 'MainState(width: $width, widgets: $widgets)';
+    return 'MainState(width: $width, widgets: $widgets, oldValue: $oldValue, moveValue: $moveValue)';
   }
 
   @override
@@ -764,12 +1177,16 @@ class _$MainStateImpl implements _MainState {
         (other.runtimeType == runtimeType &&
             other is _$MainStateImpl &&
             (identical(other.width, width) || other.width == width) &&
-            const DeepCollectionEquality().equals(other._widgets, _widgets));
+            const DeepCollectionEquality().equals(other._widgets, _widgets) &&
+            (identical(other.oldValue, oldValue) ||
+                other.oldValue == oldValue) &&
+            (identical(other.moveValue, moveValue) ||
+                other.moveValue == moveValue));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, width, const DeepCollectionEquality().hash(_widgets));
+  int get hashCode => Object.hash(runtimeType, width,
+      const DeepCollectionEquality().hash(_widgets), oldValue, moveValue);
 
   @JsonKey(ignore: true)
   @override
@@ -780,12 +1197,19 @@ class _$MainStateImpl implements _MainState {
 
 abstract class _MainState implements MainState {
   const factory _MainState(
-      {final double width, final List<WidgetModel> widgets}) = _$MainStateImpl;
+      {final double width,
+      final List<WidgetModel> widgets,
+      final Offset? oldValue,
+      final Offset moveValue}) = _$MainStateImpl;
 
   @override
   double get width;
   @override
   List<WidgetModel> get widgets;
+  @override
+  Offset? get oldValue;
+  @override
+  Offset get moveValue;
   @override
   @JsonKey(ignore: true)
   _$$MainStateImplCopyWith<_$MainStateImpl> get copyWith =>

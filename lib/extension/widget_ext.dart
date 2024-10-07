@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'dart:ui';
 
 import 'package:test_anim/enum/direction.dart';
@@ -6,23 +7,23 @@ import 'package:test_anim/models/widget_model.dart';
 extension WidgetExt on WidgetModel {
   Direction directionWidget(Offset offset) {
 
-    if (offset.dx > width - 10 && offset.dy > 10 && offset.dy < height - 10) {
+    if (offset.dx > rect.width - 10 && offset.dy > 10 && offset.dy < rect.height - 10) {
       return Direction.right;
     }
 
-    if (offset.dy > height - 10 && offset.dx > width - 10) {
+    if (offset.dy > rect.height - 10 && offset.dx > rect.width - 10) {
       return Direction.bottomRight;
     }
 
-    if (offset.dx > 10 && offset.dx < width - 10 && offset.dy > height - 10) {
+    if (offset.dx > 10 && offset.dx < rect.width - 10 && offset.dy > rect.height - 10) {
       return Direction.bottom;
     }
-    return Direction.none;
+    return Direction.move;
   }
 
   WidgetModel value(Offset offset) {
-    var newWidth = width;
-    var newHeight = height;
+    var newWidth = rect.width;
+    var newHeight = rect.height;
 
     switch (direction) {
       case Direction.bottomRight:
@@ -35,10 +36,11 @@ extension WidgetExt on WidgetModel {
       case Direction.right:
         newWidth += offset.dx;
         break;
+      case Direction.move:
       case Direction.none:
         break;
     }
 
-    return copyWith(width: newWidth, height: newHeight);
+    return copyWith(rect: Rectangle(rect.left, rect.top, newWidth, newHeight));
   }
 }

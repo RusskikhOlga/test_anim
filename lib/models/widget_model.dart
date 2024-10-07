@@ -1,36 +1,30 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:test_anim/enum/direction.dart';
 
 class WidgetModel {
-  final String id;
-  final double width;
-  final double height;
+  final int id;
+  final Rectangle<double> rect;
   final int position;
-  final double x;
-  final double y;
   final Color color;
   final bool isActive;
   final Direction direction;
 
+
   WidgetModel({
     required this.id,
-    this.width = 250,
-    this.height = 150,
+    required this.rect,
     this.position = 0,
-    this.x = 20,
-    this.y = 20,
     required this.color,
     this.isActive = true,
-    this.direction = Direction.none,
+    this.direction = Direction.move,
   });
 
   WidgetModel copyWith({
-    double? width,
-    double? height,
-    double? x,
-    double? y,
+    Rectangle<double>? rect,
     int? position,
     Direction? direction,
     bool? isActive,
@@ -41,10 +35,7 @@ class WidgetModel {
       direction: direction ?? this.direction,
       isActive: isActive ?? this.isActive,
       position: position ?? this.position,
-      x: x ?? this.x,
-      y: y ?? this.y,
-      height: height ?? this.height,
-      width: width ?? this.width,
+      rect: rect ?? this.rect,
     );
   }
 }
