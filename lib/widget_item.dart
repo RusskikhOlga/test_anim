@@ -29,7 +29,7 @@ class _WidgetItemState extends State<WidgetItem>
     super.initState();
     _ac = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 400),
+      duration: const Duration(milliseconds: 300),
     );
     from = Offset(widget.data.rect.left, widget.data.rect.top);
     to = Offset(widget.data.rect.left, widget.data.rect.top);
@@ -37,11 +37,13 @@ class _WidgetItemState extends State<WidgetItem>
 
   @override
   void didUpdateWidget(covariant WidgetItem oldWidget) {
-    //if (widget.data.id == 3)
-      //print('id ${widget.data.id} ${widget.data.direction} ${oldWidget.data.rect} ${widget.data.rect}');
-    if (widget.data.direction != Direction.move && oldWidget.data.rect.top != widget.data.rect.top) {
+    if (widget.data.rect != oldWidget.data.rect) {
+      print('change ${widget.data.id} rect ${widget.data.rect} to ${oldWidget.data.rect} with ${widget.data.direction}');
+    }
+    if (widget.data.direction != Direction.move && ((oldWidget.data.rect.top - widget.data.rect.top).abs() > 1 || (oldWidget.data.rect.left - widget.data.rect.left).abs() > 1)) {
       from = Offset(oldWidget.data.rect.left, oldWidget.data.rect.top);
       to = Offset(widget.data.rect.left, widget.data.rect.top);
+      print('change ${widget.data.id} anim');
       _ac.forward(from: 0);
     }
     super.didUpdateWidget(oldWidget);
@@ -61,15 +63,9 @@ class _WidgetItemState extends State<WidgetItem>
       child: MouseRegion(
         cursor: widget.data.direction.cursor(),
         onHover: (event) {
-          print('onHove ${widget.data.id}');
           context
               .read<MainBloc>()
               .add(MainEvent.cursor(widget.data.id, event.localPosition));
-        },
-        onExit: (event) {
-          context
-              .read<MainBloc>()
-              .add(MainEvent.clearCursor(widget.data.id));
         },
         child: GestureDetector(
           onPanUpdate: (e) {

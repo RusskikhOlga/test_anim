@@ -4,14 +4,13 @@ import 'dart:ui';
 import 'package:flutter/widgets.dart';
 import 'package:test_anim/constants.dart';
 import 'package:test_anim/enum/direction.dart';
-import 'package:test_anim/extension/offset_ext.dart';
 import 'package:test_anim/extension/widget_ext.dart';
-import 'package:uuid/uuid.dart';
 import 'package:bloc/bloc.dart';
 
-import "package:freezed_annotation/freezed_annotation.dart";
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:test_anim/models/widget_model.dart';
 import 'package:collection/collection.dart';
+import 'package:uuid/uuid.dart';
 
 part 'main_bloc.freezed.dart';
 
@@ -28,7 +27,6 @@ class MainBloc extends Bloc<MainEvent, MainState> {
         cursor: (id, offset) => _cursor(id, offset, emit),
         change: (id, offset) => _change(id, offset, emit),
         toPosition: (id) => _toPosition(id, emit),
-        clearCursor: (id) => _clearCursor(id, emit),
       );
     });
   }
@@ -38,44 +36,45 @@ class MainBloc extends Bloc<MainEvent, MainState> {
     var list = List.of(state.widgets);
 
     var item = WidgetModel(
-        id: list.isEmpty
-            ? 1
-            : list.map((e) => e.id).max + 1, //const Uuid().v4(),
-        rect: kRect,
-        color: Color.fromARGB(
-          255,
-          r.nextInt(255),
-          r.nextInt(255),
-          r.nextInt(255),
-        ),
-        position: list.isEmpty ? 0 : list.map((e) => e.position).max + 1);
-    list.add(item);
-    list = _checkWidgets(list);
+      id: const Uuid().v4(),
+      rect: kRect,
+      color: Color.fromARGB(
+        255,
+        r.nextInt(255),
+        r.nextInt(255),
+        r.nextInt(255),
+      ),
+      zIndex: list.isEmpty ? 0 : list.map((e) => e.zIndex).max + 1,
+    );
+    List<WidgetModel> data = [];
+    if (list.isNotEmpty) {
+      var groupList = groupBy(list, (e) => e.rect.top);
+      var keys = groupList.keys.sorted((a, b) => a.compareTo(b));
+      for (var item in keys) {
+        data.addAll(groupList[item]!.sorted(
+          (a, b) => a.rect.left.compareTo(b.rect.left),
+        ));
+      }
+    }
+    data.add(item);
+    list = _checkWidgets(data);
     emit(state.copyWith(widgets: list));
   }
 
-  void _clearCursor(int id, Emitter<MainState> emit) {
-    var widget = state.widgets.firstWhere((e) => e.id == id);
-    var list = List.of(state.widgets)
-      ..remove(widget)
-      ..add(widget.copyWith(direction: Direction.none));
-    emit(state.copyWith(widgets: list));
-    print('cursor $id clear');
-  }
-
-  void _cursor(int id, Offset offset, Emitter<MainState> emit) {
+  void _cursor(String id, Offset offset, Emitter<MainState> emit) {
     if (state.oldValue != null) return;
+
     var widget = state.widgets.firstWhere((e) => e.id == id);
     var direction = widget.directionWidget(offset);
-    var index = state.widgets.indexOf(widget);
     print('cursor $id $direction');
+    var index = state.widgets.indexOf(widget);
     var list = List.of(state.widgets)
       ..remove(widget)
       ..insert(index, widget.copyWith(direction: direction));
     emit(state.copyWith(widgets: list));
   }
 
-  void _change(int id, Offset offset, Emitter<MainState> emit) {
+  void _change(String id, Offset offset, Emitter<MainState> emit) {
     var widget = state.widgets.firstWhere((e) => e.id == id);
     if (widget.direction == Direction.move) {
       _move(id, offset, emit);
@@ -84,7 +83,7 @@ class MainBloc extends Bloc<MainEvent, MainState> {
     }
   }
 
-  void _move(int id, Offset offset, Emitter<MainState> emit) {
+  void _move(String id, Offset offset, Emitter<MainState> emit) {
     var widget = state.widgets.firstWhere((e) => e.id == id);
     var list = List.of(state.widgets);
     if (state.oldValue == null) {
@@ -98,10 +97,15 @@ class MainBloc extends Bloc<MainEvent, MainState> {
         if (item != widget) {
           list
             ..remove(item)
-            ..insert(i, item.copyWith(position: i + 1));
+            ..insert(
+                i,
+                item.copyWith(
+                  zIndex: i + 1,
+                  direction: Direction.none,
+                ));
         }
       }
-      list.sort((a, b) => a.position.compareTo(b.position));
+      list.sort((a, b) => a.zIndex.compareTo(b.zIndex));
     }
 
     var newWidget = widget.copyWith(
@@ -111,7 +115,7 @@ class MainBloc extends Bloc<MainEvent, MainState> {
         widget.rect.width,
         widget.rect.height,
       ),
-      position: 0,
+      zIndex: 0,
     );
     list
       ..remove(widget)
@@ -133,7 +137,6 @@ class MainBloc extends Bloc<MainEvent, MainState> {
       var p2 = widget.rect.width * widget.rect.height;
       var percent = p1 * 100 / p2;
       if (percent > 50) {
-        print('change ${item.id}');
         list
           ..remove(item)
           ..add(item.copyWith(
@@ -144,13 +147,16 @@ class MainBloc extends Bloc<MainEvent, MainState> {
               item.rect.height,
             ),
           ));
-        emit(state.copyWith(widgets: list));
-        //emit(state.copyWith(oldValue: Offset(item.rect.left, item.rect.top)));
+        //list = _checkWidgets(list);
+        emit(state.copyWith(
+          widgets: list,
+          oldValue: Offset(item.rect.left, item.rect.top),
+        ));
       }
     }
   }
 
-  void _toPosition(int id, Emitter<MainState> emit) {
+  void _toPosition(String id, Emitter<MainState> emit) {
     if (state.oldValue == null) {
       emit(state.copyWith(oldValue: null));
       return;
@@ -168,13 +174,14 @@ class MainBloc extends Bloc<MainEvent, MainState> {
         ),
         direction: Direction.none,
       ));
-    emit(state.copyWith(widgets: list));
+    emit(state.copyWith(widgets: list, oldValue: null));
   }
 
-  void _changeSize(int id, Offset offset, Emitter<MainState> emit) {
+  void _changeSize(String id, Offset offset, Emitter<MainState> emit) {
     var widget = state.widgets.firstWhere((e) => e.id == id);
-    var index = state.widgets.indexOf(widget);
     var newWidget = widget.value(offset);
+    if (widget.rect == newWidget.rect) return;
+    var index = state.widgets.indexOf(widget);
     var list = List.of(state.widgets)
       ..remove(widget)
       ..insert(index, newWidget);

@@ -6,9 +6,9 @@ import 'package:flutter/services.dart';
 import 'package:test_anim/enum/direction.dart';
 
 class WidgetModel {
-  final int id;
+  final String id;
   final Rectangle<double> rect;
-  final int position;
+  final int zIndex;
   final Color color;
   final bool isActive;
   final Direction direction;
@@ -17,15 +17,15 @@ class WidgetModel {
   WidgetModel({
     required this.id,
     required this.rect,
-    this.position = 0,
+    this.zIndex = 0,
     required this.color,
     this.isActive = true,
-    this.direction = Direction.move,
+    this.direction = Direction.none,
   });
 
   WidgetModel copyWith({
     Rectangle<double>? rect,
-    int? position,
+    int? zIndex,
     Direction? direction,
     bool? isActive,
   }) {
@@ -34,7 +34,7 @@ class WidgetModel {
       color: color,
       direction: direction ?? this.direction,
       isActive: isActive ?? this.isActive,
-      position: position ?? this.position,
+      zIndex: zIndex ?? this.zIndex,
       rect: rect ?? this.rect,
     );
   }
