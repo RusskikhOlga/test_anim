@@ -37,13 +37,15 @@ class _WidgetItemState extends State<WidgetItem>
 
   @override
   void didUpdateWidget(covariant WidgetItem oldWidget) {
-    if (widget.data.rect != oldWidget.data.rect) {
+    /* if (widget.data.rect != oldWidget.data.rect) {
       print('change ${widget.data.id} rect ${widget.data.rect} to ${oldWidget.data.rect} with ${widget.data.direction}');
-    }
-    if (widget.data.direction != Direction.move && ((oldWidget.data.rect.top - widget.data.rect.top).abs() > 1 || (oldWidget.data.rect.left - widget.data.rect.left).abs() > 1)) {
+    }*/
+    if (widget.data.direction != Direction.move &&
+        ((oldWidget.data.rect.top - widget.data.rect.top).abs() > 1 ||
+            (oldWidget.data.rect.left - widget.data.rect.left).abs() > 1)) {
       from = Offset(oldWidget.data.rect.left, oldWidget.data.rect.top);
       to = Offset(widget.data.rect.left, widget.data.rect.top);
-      print('change ${widget.data.id} anim');
+      //print('change ${widget.data.id} anim');
       _ac.forward(from: 0);
     }
     super.didUpdateWidget(oldWidget);
@@ -55,8 +57,12 @@ class _WidgetItemState extends State<WidgetItem>
       animation: _ac,
       builder: (_, child) {
         return Positioned(
-          left: _ac.isAnimating ? from.dx - (from.dx - to.dx) * _ac.value : widget.data.rect.left,
-          top: _ac.isAnimating ? from.dy - (from.dy - to.dy) * _ac.value : widget.data.rect.top,
+          left: _ac.isAnimating
+              ? from.dx - (from.dx - to.dx) * _ac.value
+              : widget.data.rect.left,
+          top: _ac.isAnimating
+              ? from.dy - (from.dy - to.dy) * _ac.value
+              : widget.data.rect.top,
           child: child!,
         );
       },
@@ -74,8 +80,7 @@ class _WidgetItemState extends State<WidgetItem>
                 .add(MainEvent.change(widget.data.id, e.delta));
           },
           onPanEnd: (e) {
-            context.read<MainBloc>()
-                .add(MainEvent.toPosition(widget.data.id));
+            context.read<MainBloc>().add(MainEvent.toPosition(widget.data.id));
           },
           child: Container(
             width: widget.data.rect.width,
@@ -91,6 +96,12 @@ class _WidgetItemState extends State<WidgetItem>
                   offset: const Offset(0, 2), // changes position of shadow
                 ),
               ],
+            ),
+            child: Center(
+              child: Text(
+                widget.data.id,
+                style: const TextStyle(color: Colors.white, fontSize: 22),
+              ),
             ),
           ),
         ),

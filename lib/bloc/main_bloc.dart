@@ -10,7 +10,6 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:test_anim/models/widget_model.dart';
 import 'package:collection/collection.dart';
-import 'package:uuid/uuid.dart';
 
 part 'main_bloc.freezed.dart';
 
@@ -22,21 +21,32 @@ class MainBloc extends Bloc<MainEvent, MainState> {
   MainBloc() : super(MainState.initial()) {
     on<MainEvent>((event, emit) async {
       await event.when<FutureOr<void>>(
-        init: (width) => emit(state.copyWith(width: width - 40)),
+        init: (width) {
+          print('init $width');
+          emit(state.copyWith(width: width - 40));
+          },
         add: () => _add(emit),
         cursor: (id, offset) => _cursor(id, offset, emit),
         change: (id, offset) => _change(id, offset, emit),
         toPosition: (id) => _toPosition(id, emit),
+        changeSize: (width) => _changeWidth(width, emit),
       );
     });
+  }
+
+  void _changeWidth(double width, Emitter<MainState> emit) {
+    emit(state.copyWith(width: width - 40));
+    var list = _checkWidgets(List.of(state.widgets));
+    emit(state.copyWith(widgets: list));
   }
 
   void _add(Emitter<MainState> emit) {
     var r = Random();
     var list = List.of(state.widgets);
 
+    var idLast = list.isEmpty ? 1 : list.map((e) => int.parse(e.id)).max + 1;
     var item = WidgetModel(
-      id: const Uuid().v4(),
+      id: idLast.toString(),
       rect: kRect,
       color: Color.fromARGB(
         255,
@@ -66,7 +76,6 @@ class MainBloc extends Bloc<MainEvent, MainState> {
 
     var widget = state.widgets.firstWhere((e) => e.id == id);
     var direction = widget.directionWidget(offset);
-    print('cursor $id $direction');
     var index = state.widgets.indexOf(widget);
     var list = List.of(state.widgets)
       ..remove(widget)
@@ -135,23 +144,55 @@ class MainBloc extends Bloc<MainEvent, MainState> {
       var newRect = item.rect.intersection(widget.rect);
       var p1 = newRect!.width * newRect.height;
       var p2 = widget.rect.width * widget.rect.height;
+      if (item.rect.width * item.rect.height < p2) {
+        p2 = item.rect.width * item.rect.height;
+      }
+
       var percent = p1 * 100 / p2;
       if (percent > 50) {
+        var indexItem = list.indexOf(item);
         list
           ..remove(item)
-          ..add(item.copyWith(
-            rect: Rectangle(
-              state.oldValue!.dx,
-              state.oldValue!.dy,
-              item.rect.width,
-              item.rect.height,
-            ),
-          ));
-        //list = _checkWidgets(list);
-        emit(state.copyWith(
-          widgets: list,
-          oldValue: Offset(item.rect.left, item.rect.top),
-        ));
+          ..insert(
+              indexItem,
+              item.copyWith(
+                rect: Rectangle(
+                  state.oldValue!.dx,
+                  state.oldValue!.dy,
+                  item.rect.width,
+                  item.rect.height,
+                ),
+              ));
+        var newPosition = newWidget.copyWith(
+          rect: Rectangle(
+            item.rect.left,
+            item.rect.top,
+            newWidget.rect.width,
+            newWidget.rect.height,
+          ),
+        );
+        list
+          ..remove(newWidget)
+          ..insert(0, newPosition);
+
+        List<WidgetModel> data = [];
+        if (list.isNotEmpty) {
+          var groupList = groupBy(list, (e) => e.rect.top);
+          var keys = groupList.keys.sorted((a, b) => a.compareTo(b));
+          for (var item in keys) {
+            data.addAll(groupList[item]!.sorted(
+              (a, b) => a.rect.left.compareTo(b.rect.left),
+            ));
+          }
+        }
+        list = _checkWidgets(data);
+
+        newWidget = list.firstWhere((e) => e.id == id);
+        var oldState = Offset(newWidget.rect.left, newWidget.rect.top);
+        list
+          ..remove(newWidget)
+          ..insert(0, newWidget);
+        emit(state.copyWith(widgets: list, oldValue: oldState));
       }
     }
   }
@@ -174,7 +215,17 @@ class MainBloc extends Bloc<MainEvent, MainState> {
         ),
         direction: Direction.none,
       ));
-    emit(state.copyWith(widgets: list, oldValue: null));
+    List<WidgetModel> data = [];
+    if (list.isNotEmpty) {
+      var groupList = groupBy(list, (e) => e.rect.top);
+      var keys = groupList.keys.sorted((a, b) => a.compareTo(b));
+      for (var item in keys) {
+        data.addAll(groupList[item]!.sorted(
+          (a, b) => a.rect.left.compareTo(b.rect.left),
+        ));
+      }
+    }
+    emit(state.copyWith(widgets: data, oldValue: null));
   }
 
   void _changeSize(String id, Offset offset, Emitter<MainState> emit) {
@@ -202,6 +253,7 @@ class MainBloc extends Bloc<MainEvent, MainState> {
               item.copyWith(
                 rect: Rectangle(x, y, item.rect.width, item.rect.height),
               ));
+        item = list[i];
       }
       x = item.rect.left + item.rect.width + kRect.left;
       var widgetHeight = list

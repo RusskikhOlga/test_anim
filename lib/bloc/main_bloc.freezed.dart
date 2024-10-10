@@ -23,6 +23,7 @@ mixin _$MainEvent {
     required TResult Function(String id, Offset offset) cursor,
     required TResult Function(String id, Offset offset) change,
     required TResult Function(String id) toPosition,
+    required TResult Function(double width) changeSize,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +33,7 @@ mixin _$MainEvent {
     TResult? Function(String id, Offset offset)? cursor,
     TResult? Function(String id, Offset offset)? change,
     TResult? Function(String id)? toPosition,
+    TResult? Function(double width)? changeSize,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +43,7 @@ mixin _$MainEvent {
     TResult Function(String id, Offset offset)? cursor,
     TResult Function(String id, Offset offset)? change,
     TResult Function(String id)? toPosition,
+    TResult Function(double width)? changeSize,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,6 +54,7 @@ mixin _$MainEvent {
     required TResult Function(_Cursor value) cursor,
     required TResult Function(_Change value) change,
     required TResult Function(_ToPosition value) toPosition,
+    required TResult Function(_ChangeWidth value) changeSize,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +64,7 @@ mixin _$MainEvent {
     TResult? Function(_Cursor value)? cursor,
     TResult? Function(_Change value)? change,
     TResult? Function(_ToPosition value)? toPosition,
+    TResult? Function(_ChangeWidth value)? changeSize,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +74,7 @@ mixin _$MainEvent {
     TResult Function(_Cursor value)? cursor,
     TResult Function(_Change value)? change,
     TResult Function(_ToPosition value)? toPosition,
+    TResult Function(_ChangeWidth value)? changeSize,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -132,6 +138,7 @@ class _$AddImpl implements _Add {
     required TResult Function(String id, Offset offset) cursor,
     required TResult Function(String id, Offset offset) change,
     required TResult Function(String id) toPosition,
+    required TResult Function(double width) changeSize,
   }) {
     return add();
   }
@@ -144,6 +151,7 @@ class _$AddImpl implements _Add {
     TResult? Function(String id, Offset offset)? cursor,
     TResult? Function(String id, Offset offset)? change,
     TResult? Function(String id)? toPosition,
+    TResult? Function(double width)? changeSize,
   }) {
     return add?.call();
   }
@@ -156,6 +164,7 @@ class _$AddImpl implements _Add {
     TResult Function(String id, Offset offset)? cursor,
     TResult Function(String id, Offset offset)? change,
     TResult Function(String id)? toPosition,
+    TResult Function(double width)? changeSize,
     required TResult orElse(),
   }) {
     if (add != null) {
@@ -172,6 +181,7 @@ class _$AddImpl implements _Add {
     required TResult Function(_Cursor value) cursor,
     required TResult Function(_Change value) change,
     required TResult Function(_ToPosition value) toPosition,
+    required TResult Function(_ChangeWidth value) changeSize,
   }) {
     return add(this);
   }
@@ -184,6 +194,7 @@ class _$AddImpl implements _Add {
     TResult? Function(_Cursor value)? cursor,
     TResult? Function(_Change value)? change,
     TResult? Function(_ToPosition value)? toPosition,
+    TResult? Function(_ChangeWidth value)? changeSize,
   }) {
     return add?.call(this);
   }
@@ -196,6 +207,7 @@ class _$AddImpl implements _Add {
     TResult Function(_Cursor value)? cursor,
     TResult Function(_Change value)? change,
     TResult Function(_ToPosition value)? toPosition,
+    TResult Function(_ChangeWidth value)? changeSize,
     required TResult orElse(),
   }) {
     if (add != null) {
@@ -277,6 +289,7 @@ class _$InitImpl implements _Init {
     required TResult Function(String id, Offset offset) cursor,
     required TResult Function(String id, Offset offset) change,
     required TResult Function(String id) toPosition,
+    required TResult Function(double width) changeSize,
   }) {
     return init(width);
   }
@@ -289,6 +302,7 @@ class _$InitImpl implements _Init {
     TResult? Function(String id, Offset offset)? cursor,
     TResult? Function(String id, Offset offset)? change,
     TResult? Function(String id)? toPosition,
+    TResult? Function(double width)? changeSize,
   }) {
     return init?.call(width);
   }
@@ -301,6 +315,7 @@ class _$InitImpl implements _Init {
     TResult Function(String id, Offset offset)? cursor,
     TResult Function(String id, Offset offset)? change,
     TResult Function(String id)? toPosition,
+    TResult Function(double width)? changeSize,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -317,6 +332,7 @@ class _$InitImpl implements _Init {
     required TResult Function(_Cursor value) cursor,
     required TResult Function(_Change value) change,
     required TResult Function(_ToPosition value) toPosition,
+    required TResult Function(_ChangeWidth value) changeSize,
   }) {
     return init(this);
   }
@@ -329,6 +345,7 @@ class _$InitImpl implements _Init {
     TResult? Function(_Cursor value)? cursor,
     TResult? Function(_Change value)? change,
     TResult? Function(_ToPosition value)? toPosition,
+    TResult? Function(_ChangeWidth value)? changeSize,
   }) {
     return init?.call(this);
   }
@@ -341,6 +358,7 @@ class _$InitImpl implements _Init {
     TResult Function(_Cursor value)? cursor,
     TResult Function(_Change value)? change,
     TResult Function(_ToPosition value)? toPosition,
+    TResult Function(_ChangeWidth value)? changeSize,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -436,6 +454,7 @@ class _$CursorImpl implements _Cursor {
     required TResult Function(String id, Offset offset) cursor,
     required TResult Function(String id, Offset offset) change,
     required TResult Function(String id) toPosition,
+    required TResult Function(double width) changeSize,
   }) {
     return cursor(id, offset);
   }
@@ -448,6 +467,7 @@ class _$CursorImpl implements _Cursor {
     TResult? Function(String id, Offset offset)? cursor,
     TResult? Function(String id, Offset offset)? change,
     TResult? Function(String id)? toPosition,
+    TResult? Function(double width)? changeSize,
   }) {
     return cursor?.call(id, offset);
   }
@@ -460,6 +480,7 @@ class _$CursorImpl implements _Cursor {
     TResult Function(String id, Offset offset)? cursor,
     TResult Function(String id, Offset offset)? change,
     TResult Function(String id)? toPosition,
+    TResult Function(double width)? changeSize,
     required TResult orElse(),
   }) {
     if (cursor != null) {
@@ -476,6 +497,7 @@ class _$CursorImpl implements _Cursor {
     required TResult Function(_Cursor value) cursor,
     required TResult Function(_Change value) change,
     required TResult Function(_ToPosition value) toPosition,
+    required TResult Function(_ChangeWidth value) changeSize,
   }) {
     return cursor(this);
   }
@@ -488,6 +510,7 @@ class _$CursorImpl implements _Cursor {
     TResult? Function(_Cursor value)? cursor,
     TResult? Function(_Change value)? change,
     TResult? Function(_ToPosition value)? toPosition,
+    TResult? Function(_ChangeWidth value)? changeSize,
   }) {
     return cursor?.call(this);
   }
@@ -500,6 +523,7 @@ class _$CursorImpl implements _Cursor {
     TResult Function(_Cursor value)? cursor,
     TResult Function(_Change value)? change,
     TResult Function(_ToPosition value)? toPosition,
+    TResult Function(_ChangeWidth value)? changeSize,
     required TResult orElse(),
   }) {
     if (cursor != null) {
@@ -596,6 +620,7 @@ class _$ChangeImpl implements _Change {
     required TResult Function(String id, Offset offset) cursor,
     required TResult Function(String id, Offset offset) change,
     required TResult Function(String id) toPosition,
+    required TResult Function(double width) changeSize,
   }) {
     return change(id, offset);
   }
@@ -608,6 +633,7 @@ class _$ChangeImpl implements _Change {
     TResult? Function(String id, Offset offset)? cursor,
     TResult? Function(String id, Offset offset)? change,
     TResult? Function(String id)? toPosition,
+    TResult? Function(double width)? changeSize,
   }) {
     return change?.call(id, offset);
   }
@@ -620,6 +646,7 @@ class _$ChangeImpl implements _Change {
     TResult Function(String id, Offset offset)? cursor,
     TResult Function(String id, Offset offset)? change,
     TResult Function(String id)? toPosition,
+    TResult Function(double width)? changeSize,
     required TResult orElse(),
   }) {
     if (change != null) {
@@ -636,6 +663,7 @@ class _$ChangeImpl implements _Change {
     required TResult Function(_Cursor value) cursor,
     required TResult Function(_Change value) change,
     required TResult Function(_ToPosition value) toPosition,
+    required TResult Function(_ChangeWidth value) changeSize,
   }) {
     return change(this);
   }
@@ -648,6 +676,7 @@ class _$ChangeImpl implements _Change {
     TResult? Function(_Cursor value)? cursor,
     TResult? Function(_Change value)? change,
     TResult? Function(_ToPosition value)? toPosition,
+    TResult? Function(_ChangeWidth value)? changeSize,
   }) {
     return change?.call(this);
   }
@@ -660,6 +689,7 @@ class _$ChangeImpl implements _Change {
     TResult Function(_Cursor value)? cursor,
     TResult Function(_Change value)? change,
     TResult Function(_ToPosition value)? toPosition,
+    TResult Function(_ChangeWidth value)? changeSize,
     required TResult orElse(),
   }) {
     if (change != null) {
@@ -748,6 +778,7 @@ class _$ToPositionImpl implements _ToPosition {
     required TResult Function(String id, Offset offset) cursor,
     required TResult Function(String id, Offset offset) change,
     required TResult Function(String id) toPosition,
+    required TResult Function(double width) changeSize,
   }) {
     return toPosition(id);
   }
@@ -760,6 +791,7 @@ class _$ToPositionImpl implements _ToPosition {
     TResult? Function(String id, Offset offset)? cursor,
     TResult? Function(String id, Offset offset)? change,
     TResult? Function(String id)? toPosition,
+    TResult? Function(double width)? changeSize,
   }) {
     return toPosition?.call(id);
   }
@@ -772,6 +804,7 @@ class _$ToPositionImpl implements _ToPosition {
     TResult Function(String id, Offset offset)? cursor,
     TResult Function(String id, Offset offset)? change,
     TResult Function(String id)? toPosition,
+    TResult Function(double width)? changeSize,
     required TResult orElse(),
   }) {
     if (toPosition != null) {
@@ -788,6 +821,7 @@ class _$ToPositionImpl implements _ToPosition {
     required TResult Function(_Cursor value) cursor,
     required TResult Function(_Change value) change,
     required TResult Function(_ToPosition value) toPosition,
+    required TResult Function(_ChangeWidth value) changeSize,
   }) {
     return toPosition(this);
   }
@@ -800,6 +834,7 @@ class _$ToPositionImpl implements _ToPosition {
     TResult? Function(_Cursor value)? cursor,
     TResult? Function(_Change value)? change,
     TResult? Function(_ToPosition value)? toPosition,
+    TResult? Function(_ChangeWidth value)? changeSize,
   }) {
     return toPosition?.call(this);
   }
@@ -812,6 +847,7 @@ class _$ToPositionImpl implements _ToPosition {
     TResult Function(_Cursor value)? cursor,
     TResult Function(_Change value)? change,
     TResult Function(_ToPosition value)? toPosition,
+    TResult Function(_ChangeWidth value)? changeSize,
     required TResult orElse(),
   }) {
     if (toPosition != null) {
@@ -827,6 +863,163 @@ abstract class _ToPosition implements MainEvent {
   String get id;
   @JsonKey(ignore: true)
   _$$ToPositionImplCopyWith<_$ToPositionImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeWidthImplCopyWith<$Res> {
+  factory _$$ChangeWidthImplCopyWith(
+          _$ChangeWidthImpl value, $Res Function(_$ChangeWidthImpl) then) =
+      __$$ChangeWidthImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({double width});
+}
+
+/// @nodoc
+class __$$ChangeWidthImplCopyWithImpl<$Res>
+    extends _$MainEventCopyWithImpl<$Res, _$ChangeWidthImpl>
+    implements _$$ChangeWidthImplCopyWith<$Res> {
+  __$$ChangeWidthImplCopyWithImpl(
+      _$ChangeWidthImpl _value, $Res Function(_$ChangeWidthImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? width = null,
+  }) {
+    return _then(_$ChangeWidthImpl(
+      null == width
+          ? _value.width
+          : width // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeWidthImpl implements _ChangeWidth {
+  const _$ChangeWidthImpl(this.width);
+
+  @override
+  final double width;
+
+  @override
+  String toString() {
+    return 'MainEvent.changeSize(width: $width)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeWidthImpl &&
+            (identical(other.width, width) || other.width == width));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, width);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeWidthImplCopyWith<_$ChangeWidthImpl> get copyWith =>
+      __$$ChangeWidthImplCopyWithImpl<_$ChangeWidthImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() add,
+    required TResult Function(double width) init,
+    required TResult Function(String id, Offset offset) cursor,
+    required TResult Function(String id, Offset offset) change,
+    required TResult Function(String id) toPosition,
+    required TResult Function(double width) changeSize,
+  }) {
+    return changeSize(width);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? add,
+    TResult? Function(double width)? init,
+    TResult? Function(String id, Offset offset)? cursor,
+    TResult? Function(String id, Offset offset)? change,
+    TResult? Function(String id)? toPosition,
+    TResult? Function(double width)? changeSize,
+  }) {
+    return changeSize?.call(width);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? add,
+    TResult Function(double width)? init,
+    TResult Function(String id, Offset offset)? cursor,
+    TResult Function(String id, Offset offset)? change,
+    TResult Function(String id)? toPosition,
+    TResult Function(double width)? changeSize,
+    required TResult orElse(),
+  }) {
+    if (changeSize != null) {
+      return changeSize(width);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Add value) add,
+    required TResult Function(_Init value) init,
+    required TResult Function(_Cursor value) cursor,
+    required TResult Function(_Change value) change,
+    required TResult Function(_ToPosition value) toPosition,
+    required TResult Function(_ChangeWidth value) changeSize,
+  }) {
+    return changeSize(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Add value)? add,
+    TResult? Function(_Init value)? init,
+    TResult? Function(_Cursor value)? cursor,
+    TResult? Function(_Change value)? change,
+    TResult? Function(_ToPosition value)? toPosition,
+    TResult? Function(_ChangeWidth value)? changeSize,
+  }) {
+    return changeSize?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Add value)? add,
+    TResult Function(_Init value)? init,
+    TResult Function(_Cursor value)? cursor,
+    TResult Function(_Change value)? change,
+    TResult Function(_ToPosition value)? toPosition,
+    TResult Function(_ChangeWidth value)? changeSize,
+    required TResult orElse(),
+  }) {
+    if (changeSize != null) {
+      return changeSize(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangeWidth implements MainEvent {
+  const factory _ChangeWidth(final double width) = _$ChangeWidthImpl;
+
+  double get width;
+  @JsonKey(ignore: true)
+  _$$ChangeWidthImplCopyWith<_$ChangeWidthImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

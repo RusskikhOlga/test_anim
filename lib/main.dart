@@ -34,15 +34,28 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  var _bloc = MainBloc();
+class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
+  final _bloc = MainBloc();
 
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     SchedulerBinding.instance.addPostFrameCallback((_) {
       _bloc.add(MainEvent.init(MediaQuery.of(context).size.width));
     });
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeMetrics() {
+    super.didChangeMetrics();
+    _bloc.add(MainEvent.changeSize(View.of(context).physicalSize.width));
   }
 
   @override
